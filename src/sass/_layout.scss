@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $color-bkg;
+  font-family: $font-text;
+  font-size: $font-text-size;
+  line-height: $font-line-hight;
+  font-weight: normal;
+  color: $color-grey-text;
+
+  a {
+    @include linkCustom();
+  }
+
+  li {
+    list-style-type: none;
+  }
+}
+
+.container {
+  width: 65%;
+  padding: 25px 0;
+  @include flex(column, center, center);
+  overflow: hidden;
+
+  @include sm-max {
+    width: 95%;
+  }
+}
+
+#header {
+  @include flex(row, stretch, flex-end);
+  background-color: $color-light;
+  width: calc(100vw - 250px);
+  height: 56px;
+  position: fixed;
+  right: 0;
+  @include border-bottom();
+  z-index: 999;
+
+  @include md-max {
+    display: none;
+  }
+}
+
+#side-navigation {
+  @include flex(column, flex-start, flex-start);
+  background-color: $color-dark;
+  position: fixed;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  z-index: 999;
+  transition: transform 0.3s ease-in-out;
+
+  @include md-max {
+    left: -0px;
+  }
+}
+
+#general {
+  width: calc(100vw - 267px);
+  background-color: transparent;
+  position: absolute;
+  top: 56px;
+  right: 0;
+  padding: 17px;
+
+  @include md-max {
+    width: 100%;
+    top: 20px;
+  }
+}
+
+.page-cart {
+  background-color: $color-light;
+  margin-bottom: 17px;
+  width: 100%;
+  position: relative;
+  border-radius: 2px;
+  @include shadow();
+
+  .page-cart-content {
+    @include border-bottom();
+    width: 100%;
+    @include flex(column, center, center);
+  }
+}
+
+.toggle {
+  transform: translateX(-100%);
+}

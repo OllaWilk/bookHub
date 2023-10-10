@@ -1,0 +1,60 @@
+#header {
+  .header--panel {
+    background-color: $color-light;
+    @include flex(row, center, center);
+    padding: 20px;
+
+    &:nth-child(odd) {
+      @include border-sides();
+    }
+
+    @include md-max {
+      display: none;
+    }
+  }
+}
+
+#wallet {
+  cursor: pointer;
+
+  i {
+    font-size: 15px;
+  }
+
+  .price {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 15px;
+    color: $color-wallet;
+  }
+}
+
+#notifications {
+  i {
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 9px;
+      height: 9px;
+      background-color: $color-main;
+      position: absolute;
+      border-radius: 50%;
+      right: -2px;
+      top: -1px;
+    }
+  }
+}
+
+#user-login .user-name {
+  margin-left: 15px;
+  color: $color-blue;
+}
+
+#exit {
+  cursor: pointer;
+}
+
+.close {
+  display: none;
+}

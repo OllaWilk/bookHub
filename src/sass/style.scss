@@ -1,3 +1,20 @@
-h1 {
-  color: red;
-}
+@import './variables';
+@import './mixins';
+@import './normalize';
+@import './layout';
+@import './typography';
+
+/* Components */
+@import './components/btns';
+@import './components/callender';
+@import './components/formField';
+@import './components/navigationLinks';
+@import './components/formFieldEdit';
+
+/* Sections */
+@import './sections/actionableList';
+@import './sections/header';
+@import './sections/side-navigation';
+/* Pages/Views */
+
+@import './pages/general';

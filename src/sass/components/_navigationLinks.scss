@@ -1,0 +1,19 @@
+.navigation-links {
+  padding: 8px 10px 8px 25px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+
+  .nav-link {
+    color: $color-grey-text;
+    margin-left: 25px;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &:hover {
+    background-color: $color-lighten-dark;
+    border-left: 4px solid $color-main;
+  }
+}

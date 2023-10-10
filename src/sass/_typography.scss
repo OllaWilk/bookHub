@@ -1,0 +1,15 @@
+.page-cart-title {
+  text-transform: uppercase;
+  font-size: $font-header-size;
+  padding: 17px;
+  @include border-bottom();
+}
+
+.title {
+  font-size: $font-text-size;
+}
+
+.side-title {
+  text-transform: uppercase;
+  font-size: 15px;
+}

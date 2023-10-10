@@ -1,0 +1,108 @@
+#side-navigation {
+  .logo {
+    height: 56px;
+    width: 100%;
+    padding: 0 25px;
+    cursor: pointer;
+
+    font-weight: bold;
+    font-family: $font-logo;
+    font-size: $font-logo-size;
+    @include flex(row, center, space-between);
+    color: $color-light;
+    letter-spacing: 1px;
+  }
+
+  .hamburger-wrap {
+    display: none;
+
+    @include md-max {
+      position: absolute;
+      display: block;
+      @include flex(row, center, center);
+      margin-right: 20px;
+      cursor: pointer;
+      z-index: 999;
+      background-color: $color-dark;
+      color: $color-light;
+      width: 50px;
+      height: 50px;
+      right: -70px;
+    }
+  }
+
+  .navigation-panel {
+    width: 100%;
+    border-bottom: 1px solid $color-lighten-dark;
+    padding: 0 0 25px 0;
+  }
+
+  .contact-panel {
+    padding: 25px 10px 0 25px;
+    cursor: pointer;
+
+    .contact-side-panel {
+      @include flex(row, center, space-between);
+      margin: 15px 0;
+
+      .fa-circle-user {
+        font-size: 30px;
+        position: relative;
+      }
+
+      .fa-circle-user::after {
+        content: '';
+        position: absolute;
+        background-color: $color-green;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        top: -3px;
+        right: -3px;
+      }
+
+      .contact-name {
+        color: $color-blue;
+      }
+    }
+  }
+}
+
+.active {
+  display: block;
+  color: $color-grey-text;
+  font-size: $font-header-size;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+#wallet-side {
+  margin-top: 25px;
+}
+
+#wallet-side,
+#notifications-side,
+#user-login-side,
+#exit-side {
+  display: none;
+
+  @include md-max {
+    @include flex(row, center, space-between);
+    flex-wrap: wrap;
+    width: 100%;
+    height: 45px;
+    padding: 8px 25px;
+    cursor: pointer;
+    border-top: 1px solid $color-lighten-dark;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      background-color: $color-lighten-dark;
+      color: $color-main;
+    }
+  }
+}

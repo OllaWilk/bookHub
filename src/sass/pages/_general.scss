@@ -1,0 +1,21 @@
+#counted-statistics {
+  @include flex(row, center, space-between);
+  flex-wrap: wrap;
+}
+
+#graph {
+  @include flex(column, flex-start, center);
+  width: 100%;
+  margin: 70px 0;
+
+  .graph-wrap {
+    margin-top: 44px;
+    width: 100%;
+    height: auto;
+    @include flex(column, center, center);
+
+    img {
+      @include img();
+    }
+  }
+}

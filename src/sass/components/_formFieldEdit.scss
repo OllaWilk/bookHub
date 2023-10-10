@@ -1,0 +1,38 @@
+.component--form-field-edit {
+  width: 100%;
+  padding: 20px 17px;
+  @include flex(row, center, space-between);
+  @include border-top();
+  cursor: pointer;
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
+
+  @include l-max {
+    flex-direction: column;
+  }
+
+  &:hover .icons-edition {
+    opacity: 1;
+  }
+
+  &:last-child {
+    @include border-bottom();
+  }
+
+  &:hover {
+    background-color: $color-grey;
+  }
+
+  span {
+    color: $color-blue;
+  }
+
+  .icons-edition {
+    opacity: 0;
+
+    i:first-child {
+      color: $color-main;
+      margin-right: 20px;
+    }
+  }
+}

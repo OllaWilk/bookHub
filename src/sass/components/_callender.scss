@@ -1,0 +1,60 @@
+.component--callender {
+  @include flex(row, center, center);
+  height: 40px;
+
+  @include sm-max {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .date-picker {
+    @include flex(row, center, center);
+    border: 1px solid $color-shadow;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 14px;
+
+    @include sm-max {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+
+    input {
+      width: 150px;
+      border: none;
+      margin: 10px 16px;
+      text-align: center;
+
+      @include l-max {
+        width: 100%;
+      }
+
+      @include sm-max {
+        width: auto;
+      }
+
+      &:nth-child(1) {
+        border-right: 1px solid $color-shadow;
+        margin-right: 0;
+
+        @include sm-max {
+          border: none;
+          margin: 10px 16px;
+        }
+      }
+    }
+
+    .calender-icon {
+      margin-right: 14px;
+      color: $color-grey-text;
+
+      @include sm-max {
+        display: none;
+      }
+    }
+  }
+}

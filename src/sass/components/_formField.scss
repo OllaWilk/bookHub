@@ -1,0 +1,14 @@
+.component--form-field {
+  @include flex(row, center, space-between);
+  width: 400px;
+  @include border-bottom();
+  margin-bottom: 22px;
+
+  p {
+    color: $color-dark;
+  }
+
+  @include l-max {
+    width: 100%;
+  }
+}
