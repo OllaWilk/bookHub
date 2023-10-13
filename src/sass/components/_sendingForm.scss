@@ -1,0 +1,33 @@
+.form-label-wrap {
+  @include flex(row, center, space-between);
+  width: 100%;
+  margin-bottom: 15px;
+
+  @include xl {
+    width: 50%;
+  }
+
+  @include sm-max {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  label {
+    font-weight: 500;
+    margin-right: 15px;
+  }
+
+  input {
+    padding: 8px 10px;
+    font-size: $font-text-size;
+    border: 1px solid $color-shadow;
+    border-radius: $border-radius;
+    font-weight: 400;
+    width: 60%;
+
+    @include sm-max {
+      width: 100%;
+    }
+  }
+}

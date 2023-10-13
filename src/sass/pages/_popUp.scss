@@ -1,0 +1,146 @@
+.popUp {
+  display: none;
+
+  .page-cart {
+    box-shadow: none;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 888;
+}
+
+.popup-content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  width: 60%;
+
+  @include md-max {
+    width: 85%;
+  }
+
+  .popup-manager {
+    @include flex(row, center, flex-start);
+    width: 100%;
+    padding: 12px 15px;
+
+    i {
+      font-size: 60px;
+      margin-right: 20px;
+    }
+
+    .contact-name {
+      @include flex(column, flex-start, flex-start);
+
+      .name-popup {
+        font-size: 28px;
+        color: $color-dark;
+        font-weight: 500;
+      }
+
+      .status {
+        background-color: $color-green;
+        border-radius: 8px;
+        color: $color-light;
+        font-size: 14px;
+        padding: 0px 8px;
+      }
+    }
+  }
+
+  .chatBox {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+    height: 250px;
+    padding: 15px;
+    overflow: auto;
+  }
+}
+
+.client-message {
+  margin: 10px 0;
+  background-color: $color-grey-text;
+  color: $color-light;
+
+  &::after {
+    right: 0;
+    bottom: -10px;
+    rotate: 270deg;
+    border-color: transparent transparent $color-grey-text transparent;
+  }
+}
+
+#manager-message,
+#waiting-info {
+  background-color: $color-grey;
+  color: $color-dark;
+
+  &::after {
+    left: 0;
+    top: -10px;
+    rotate: 90deg;
+    border-color: transparent transparent $color-grey transparent;
+  }
+}
+
+#manager-message,
+.client-message,
+#waiting-info {
+  padding: 5px 8px;
+  border-radius: $border-radius;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-width: 10px;
+    border-style: solid;
+  }
+}
+
+.send-message {
+  @include flex(row, center, space-between);
+  padding: 0px 15px 0 15px;
+
+  input {
+    width: 85%;
+    padding: 4px 10px;
+    border: 1px solid $color-grey-text;
+  }
+
+  button {
+    padding: 4px 10px;
+    border: 1px solid $color-main;
+    margin-left: 15px;
+  }
+}
+
+.message-name-wrap {
+  @include flex(row, center, space-between);
+  width: 100%;
+  cursor: pointer;
+
+  i {
+    padding-right: 15px;
+    width: 10%;
+    height: 100%;
+    text-align: right;
+  }
+
+  h2 {
+    width: 95%;
+  }
+}

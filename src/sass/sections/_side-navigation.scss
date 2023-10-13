@@ -22,7 +22,7 @@
       @include flex(row, center, center);
       margin-right: 20px;
       cursor: pointer;
-      z-index: 999;
+      z-index: 666;
       background-color: $color-dark;
       color: $color-light;
       width: 50px;
@@ -65,18 +65,6 @@
         color: $color-blue;
       }
     }
-  }
-}
-
-.active {
-  display: block;
-  color: $color-grey-text;
-  font-size: $font-header-size;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-
-  &:hover {
-    color: $color-main;
   }
 }
 

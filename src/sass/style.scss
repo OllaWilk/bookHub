@@ -10,11 +10,14 @@
 @import './components/formField';
 @import './components/navigationLinks';
 @import './components/formFieldEdit';
+@import './components/sendingForm';
 
 /* Sections */
 @import './sections/actionableList';
 @import './sections/header';
 @import './sections/side-navigation';
-/* Pages/Views */
 
+/* Pages/Views */
 @import './pages/general';
+@import './pages/details';
+@import './pages/popUp';

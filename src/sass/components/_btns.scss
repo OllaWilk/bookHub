@@ -1,8 +1,8 @@
 .component--btn {
   color: $color-light;
   background: $color-main;
-  border-radius: 4px;
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  border-radius: $border-radius;
+  transition: background-color $transition, color $transition;
   display: inline-block;
   border: 1px solid;
   text-decoration: none;
@@ -12,6 +12,7 @@
   @include flex(row, center, center);
   padding: 5px 24px;
   font-size: 16px;
+  margin: 15px;
 
   &:hover {
     cursor: pointer;
@@ -23,4 +24,20 @@
 .component--btn-return {
   width: 40px;
   height: 40px;
+}
+
+.button-form {
+  padding: 10px 20px;
+  margin: 35px 0;
+  background-color: $color-main;
+  color: $color-light;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  width: 100px;
+  transition: $transition;
+
+  &:hover {
+    background-color: darken($color: $color-main, $amount: 4);
+  }
 }

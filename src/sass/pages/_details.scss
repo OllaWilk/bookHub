@@ -1,0 +1,76 @@
+.table-container {
+  overflow-x: auto;
+}
+
+.table-detail {
+  width: 95%;
+  padding: 25px 0;
+  overflow-x: auto;
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  tr {
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  th {
+    @include border-bottom();
+    padding: 10px 0;
+    font-size: 15px;
+
+    &:hover {
+      background-color: $color-grey;
+    }
+  }
+
+  td {
+    color: $color-dark;
+    padding: 10px;
+    @include border-bottom();
+  }
+
+  tr {
+    &:hover {
+      background-color: $color-grey;
+    }
+  }
+}
+
+.page-switch {
+  @include flex(row, center, space-between);
+  width: 70%;
+  margin: auto;
+  padding: 10px;
+
+  i {
+    transition: $transition;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-main;
+    }
+  }
+
+  .numbers {
+    @include flex(row, center, space-between);
+
+    p {
+      cursor: pointer;
+      padding: 5px 15px;
+      margin: 10px 0;
+      color: $color-blue;
+    }
+
+    .active-page {
+      background-color: $color-grey;
+      color: $color-grey-text;
+    }
+  }
+}

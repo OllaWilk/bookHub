@@ -27,7 +27,6 @@ body {
   width: 65%;
   padding: 25px 0;
   @include flex(column, center, center);
-  overflow: hidden;
 
   @include sm-max {
     width: 95%;
@@ -42,7 +41,7 @@ body {
   position: fixed;
   right: 0;
   @include border-bottom();
-  z-index: 999;
+  z-index: 666;
 
   @include md-max {
     display: none;
@@ -56,15 +55,18 @@ body {
   left: 0;
   width: 250px;
   height: 100vh;
-  z-index: 999;
-  transition: transform 0.3s ease-in-out;
+  z-index: 666;
+  transition: transform $transition;
 
   @include md-max {
     left: -0px;
   }
 }
 
-#general {
+#general,
+#links,
+#details,
+#personal-data {
   width: calc(100vw - 267px);
   background-color: transparent;
   position: absolute;
@@ -93,6 +95,20 @@ body {
   }
 }
 
+#details {
+  .page-cart-content {
+    @include flex(column, flex-start, center);
+  }
+}
+
 .toggle {
   transform: translateX(-100%);
+}
+
+.none {
+  display: none;
+}
+
+.active {
+  display: block;
 }
