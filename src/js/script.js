@@ -1,90 +1,151 @@
-const sideNavigation = document.querySelector('#side-navigation');
-const hamburgerWrap = document.querySelector('.hamburger-wrap ');
-const hamburgerIcon = document.querySelectorAll('.hamburger-wrap i');
+/* HTML elements */
+const htmlElem = {
+  sideNavigation: document.querySelector('#side-navigation'),
+  hamburgerWrap: document.querySelector('.hamburger-wrap '),
+  hamburgerIcon: document.querySelectorAll('.hamburger-wrap i'),
+  menagerBtn: document.querySelector('.contact-side-panel'),
+  popUp: document.querySelector('.popUp'),
+  popUpClose: document.querySelector('#closeButton'),
+  navLinks: [...document.querySelectorAll('.navigation-links ')],
+  pages: [...document.querySelectorAll('section')],
+  messageInput: document.getElementById('messageInput'),
+  sendMessageButton: document.getElementById('sendMessageButton'),
+  ChatBox: document.getElementById('chatBox'),
+  personalDataForm: [...document.querySelectorAll('#personal-data input')],
+  personalDataSave: document.querySelector('#personal-data .button-form'),
+};
 
-const menagerBtn = document.querySelector('.contact-side-panel');
-const popUp = document.querySelector('.popUp');
-const popUpClose = document.querySelector('#closeButton');
-const [...navLinks] = document.querySelectorAll('.navigation-links ');
-const [...pages] = document.querySelectorAll('section');
+class FormElement {
+  constructor(inputValue, inputName) {
+    this.inputValue = inputValue;
+    this.inputName = inputName;
+    this.sendMessage(inputValue);
+    this.validation(inputValue, inputName);
+  }
 
-const messageInput = document.getElementById('messageInput');
-const sendMessageButton = document.getElementById('sendMessageButton');
-const ChatBox = document.getElementById('chatBox');
+  sendMessage(inputValue) {
+    const message = htmlElem.messageInput.value;
+    console.log(inputValue);
 
-/* Remove class toggle if windoWidth < 768px */
+    if (message) {
+      const messageElement = document.createElement('p');
 
-function addToggleClass() {
-  const windowWidth = window.innerWidth;
+      messageElement.classList.add('client-message');
+      messageElement.innerText = message;
 
-  windowWidth < 768
-    ? sideNavigation.classList.add('toggle')
-    : sideNavigation.classList.remove('toggle');
-}
-
-function switchPages(linkAttributte) {
-  pages.forEach((page) => {
-    const pageId = page.getAttribute('id');
-    if (linkAttributte === pageId) {
-      page.classList.remove('none');
-      page.classList.add('active');
-    } else {
-      page.classList.remove('active');
-      page.classList.add('none');
+      htmlElem.ChatBox.appendChild(messageElement);
+      htmlElem.messageInput.value = '';
     }
-  });
-}
+  }
 
-function openPopup() {
-  popUp.style.display = 'block';
-}
-function closePopup() {
-  popUp.style.display = 'none';
-}
+  validation(inputName, inputValue) {
+    let isFormValidate = true;
+    console.log(inputName);
+    console.log(inputValue);
+    const emailAddressInput = htmlElem.personalDataForm.querySelector(
+      'input[name="email"]'
+    );
 
-function sendMessage(e) {
-  e.preventDefault();
-  const message = messageInput.value;
-  console.log(message);
-
-  if (message) {
-    const messageElement = document.createElement('p');
-
-    messageElement.classList.add('client-message');
-    messageElement.innerText = message;
-
-    ChatBox.appendChild(messageElement);
-    messageInput.value = '';
+    if (emailAddressInput.indexOf('@') < 0) {
+      isFormValidate = false;
+      htmlElem.personalDataForm.querySelector(
+        '.error'
+      ).innerHTML = ` Invalid ${inputName} adress`;
+    }
+    return !isFormValidate ? false : true;
   }
 }
 
-window.addEventListener('load', addToggleClass);
-window.addEventListener('resize', addToggleClass);
+const app = {
+  toggleNavigation() {
+    const windowWidth = window.innerWidth;
 
-/* Show PopUp */
-menagerBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  openPopup();
-});
+    windowWidth < 768
+      ? htmlElem.sideNavigation.classList.add('toggle')
+      : htmlElem.sideNavigation.classList.remove('toggle');
+  },
 
-popUpClose.addEventListener('click', closePopup);
+  switchPages(linkAttributte) {
+    linkAttributte = htmlElem.pages.forEach((page) => {
+      const pageId = page.getAttribute('id');
+      if (linkAttributte === pageId) {
+        page.classList.remove('none');
+        page.classList.add('active');
+      } else {
+        page.classList.remove('active');
+        page.classList.add('none');
+      }
+    });
+  },
 
-/* Switch pages */
-navLinks.forEach((link) => {
-  const linkAttributte = link.querySelector('a').getAttribute('page');
+  windowListener() {
+    const thisApp = this;
+    window.addEventListener('load', thisApp.toggleNavigation);
+    window.addEventListener('resize', thisApp.toggleNavigation);
+  },
 
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    switchPages(linkAttributte);
-  });
-});
+  btnslisteners({
+    navLinks,
+    hamburgerWrap,
+    menagerBtn,
+    popUpClose,
+    popUp,
+    sendMessageButton,
+    personalDataSave,
+    personalDataForm,
+  }) {
+    /* Side Navigation Links */
+    navLinks.forEach((link) => {
+      const linkAttributte = link.querySelector('a').getAttribute('page');
 
-/* Send Message from ChatBox */
-sendMessageButton.addEventListener('click', sendMessage);
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.switchPages(linkAttributte);
+      });
+    });
 
-/* Toggle navigation after clicking in hamburger*/
-hamburgerWrap.addEventListener('click', (e) => {
-  e.preventDefault();
-  hamburgerIcon.forEach((icon) => icon.classList.toggle('close'));
-  sideNavigation.classList.toggle('toggle');
-});
+    /* Hamburger toggle */
+    hamburgerWrap.addEventListener('click', (e) => {
+      e.preventDefault();
+      htmlElem.hamburgerIcon.forEach((icon) => icon.classList.toggle('close'));
+      htmlElem.sideNavigation.classList.toggle('toggle');
+    });
+
+    /* PopUp contact with manager */
+    menagerBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      htmlElem.popUp.style.display = 'block';
+    });
+
+    popUpClose.addEventListener('click', (e) => {
+      e.preventDefault();
+      popUp.style.display = 'none';
+    });
+
+    /* Send message to manager */
+    sendMessageButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const inputValue =
+        sendMessageButton.parentElement.querySelector('#messageInput').value;
+
+      const message = new FormElement(inputValue);
+      message.sendMessage();
+    });
+
+    personalDataSave.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      personalDataForm.forEach((input) => {
+        const inputName = input.getAttribute('name');
+        new FormElement(inputName).validation();
+      });
+    });
+  },
+
+  start() {
+    this.windowListener();
+    this.btnslisteners(htmlElem);
+  },
+};
+
+app.start();

@@ -12,10 +12,13 @@
     margin-top: 44px;
     width: 100%;
     height: auto;
+    overflow-x: auto;
     @include flex(column, center, center);
 
     img {
-      @include img();
+      height: 100%;
+      width: auto;
+      max-width: 100%;
     }
   }
 }

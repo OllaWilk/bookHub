@@ -98,11 +98,10 @@
             <h2 class="page-cart-title">general statistic</h2>
             <div class="page-cart-content" id="date-picker ">
                 <div class="container">
-                    <form class="component--callender">
+                    <form action="" method="POST" class="component--callender">
                         <div class="date-picker">
-                            <input type="text" name="date" placeholder="16.05.2023">
-                            <input type="text" name="date" placeholder="18.05.2023">
-                            <i class="calender-icon fa-regular fa-calendar"></i>
+                            <input type="date" name="datev-start" min="2023-01-01" max="2023-12-31" value="2023-10-14">
+                            <input type="date" name="date-end" min="2023-01-01" max="2023-12-31" value="2023-10-21">
                         </div>
                         <i class="component--btn component--btn-return fa-solid fa-rotate-right"></i>
                     </form>
@@ -180,17 +179,18 @@
             <h2 class="page-cart-title">detail statistic</h2>
             <div class="page-cart-content" id="date-picker-page ">
                 <div class="container">
-                    <form class="component--callender">
+                    <form class="component--callender" method="POST" action="">
                         <div class="date-picker">
-                            <input type="text" name="date" placeholder="16.05.2023">
-                            <input type="text" name="date" placeholder="18.05.2023">
-                            <i class="calender-icon fa-regular fa-calendar"></i>
+                            <input type="date" name="date-start-detail" min="2023-01-01" max="2023-12-31"
+                                value="2023-10-14">
+                            <input type="date" name="date-end-detail" min="2023-01-01" max="2023-12-31"
+                                value="2023-10-21">
                         </div>
                         <i class="component--btn component--btn-return fa-solid fa-rotate-right"></i>
                     </form>
                 </div>
             </div>
-            <div class="statistics page-cart-content table-container">
+            <div class=" page-cart-content table-container scroll-wrapper">
                 <table class="table-detail">
                     <thead class="table-thead">
                         <tr>
@@ -340,63 +340,69 @@
     <section id="personal-data" class="none">
         <div class="page-cart ">
             <h2 class="page-cart-title">Personal data</h2>
-            <div class=" page-cart-content ">
-                <div class="container">
-                    <div class="form-label-wrap">
-                        <label for="name" class="text">Name</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-                    <div class="form-label-wrap">
-                        <label for="surname">Surname</label>
-                        <input type="text" id="surname" name="surname">
-                    </div>
-                    <div class="form-label-wrap">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-                    <div class="form-label-wrap">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                </div>
-            </div>
-            <div class=" page-cart-content">
-                <div class="container">
-                    <div class="form-label-wrap">
-                        <label for="skype">Skype</label>
-                        <input type="text" id="skype" name="skype">
-                    </div>
-                    <div class="form-label-wrap">
-                        <label for="icq">ICQ:</label>
-                        <input type="text" id="icq" name="icq">
-                    </div>
-                    <div class="form-label-wrap">
-                        <label for="msn">MSN:</label>
-                        <input type="text" id="msn" name="msn">
+            <form action="">
+                <div class=" page-cart-content ">
+                    <div class="container">
+                        <div class="form-label-wrap">
+                            <label for="name" class="text">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-label-wrap">
+                            <label for="surname">Surname</label>
+                            <input type="text" id="surname" name="surname" required>
+                        </div>
+                        <div class="form-label-wrap">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-label-wrap">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <p class="error"></p>
                     </div>
                 </div>
-            </div>
-            <div class=" page-cart-content">
-                <div class="container">
-                    <div class="form-label-wrap">
-                        <label for="wallet">Wallet:</label>
-                        <input type="text" id="wallet-data-form" name="wallet">
+                <div class=" page-cart-content">
+                    <div class="container">
+                        <div class="form-label-wrap">
+                            <label for="skype">Skype</label>
+                            <input type="text" id="skype" name="skype">
+                        </div>
+                        <div class="form-label-wrap">
+                            <label for="icq">ICQ:</label>
+                            <input type="text" id="icq" name="icq">
+                        </div>
+                        <div class="form-label-wrap">
+                            <label for="msn">MSN:</label>
+                            <input type="text" id="msn" name="msn">
+                        </div>
+                    </div>
+
+                </div>
+                <div class=" page-cart-content">
+                    <div class="container">
+                        <div class="form-label-wrap">
+                            <label for="wallet">Wallet:</label>
+                            <input type="text" id="wallet-data-form" name="wallet">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class=" page-cart-content">
-                <div class="container">
-                    <div class="form-label-wrap"> <label for="password">Password:</label>
-                        <input type="password" id="password" name="password">
-                    </div>
-                    <div class="form-label-wrap"> <label for="repeat-password">Repeat Password:</label>
-                        <input type="password" id="repeat-password" name="repeat-password">
+                <div class=" page-cart-content">
+                    <div class="container">
+                        <div class="form-label-wrap"> <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <div class="form-label-wrap"> <label for="repeat-password">Repeat Password:</label>
+                            <input type="password" id="repeat-password" name="repeat-password" required>
+                        </div>
+                        <p class="error-password"></p>
                     </div>
                 </div>
-            </div>
-            <div class="page-cart-content">
-                <button type="submit" class="button-form">Save</button>
-            </div>
+
+                <div class="page-cart-content">
+                    <button type="submit" class="button-form">Save</button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -425,8 +431,8 @@
                         <p id="client-message" class="client-message">Hi I would like to know sth about postback</p>
                     </div>
                 </div>
-                <form action="/" class="send-message">
-                    <input type="text" id="messageInput" placeholder="Enter the message" />
+                <form action="" class="send-message">
+                    <input type="text" id="messageInput" placeholder="Enter the message" name="message" />
                     <button class="button-form" id="sendMessageButton">Send</button>
                 </form>
             </div>

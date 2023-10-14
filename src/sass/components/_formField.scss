@@ -1,8 +1,14 @@
 .component--form-field {
   @include flex(row, center, space-between);
   width: 400px;
+
   @include border-bottom();
   margin-bottom: 22px;
+
+  @media (max-width: 1555px) {
+    width: 200px;
+    margin: 8px;
+  }
 
   p {
     color: $color-dark;

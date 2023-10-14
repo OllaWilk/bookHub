@@ -97,7 +97,7 @@ body {
 
 #details {
   .page-cart-content {
-    @include flex(column, flex-start, center);
+    @include flex(column, center, center);
   }
 }
 
@@ -111,4 +111,11 @@ body {
 
 .active {
   display: block;
+}
+
+.error {
+  color: $color-main;
+  padding: 10px;
+  font-size: 15px;
+  width: 300px;
 }

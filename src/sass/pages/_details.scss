@@ -1,16 +1,12 @@
 .table-container {
+  display: block;
+  width: 100%;
   overflow-x: auto;
 }
 
 .table-detail {
-  width: 95%;
-  padding: 25px 0;
-  overflow-x: auto;
-
-  table {
-    border-collapse: collapse;
-    width: 100%;
-  }
+  max-width: 100%;
+  width: 100%;
 
   th,
   tr {
@@ -48,6 +44,7 @@
   width: 70%;
   margin: auto;
   padding: 10px;
+  overflow: auto;
 
   i {
     transition: $transition;
