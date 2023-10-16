@@ -2,6 +2,11 @@
   @include flex(row, center, space-between);
   width: 100%;
   margin-bottom: 15px;
+  flex-wrap: wrap;
+
+  .error {
+    width: 100%;
+  }
 
   @include xl {
     width: 50%;

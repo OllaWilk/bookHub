@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* HTML elements */
 const htmlElem = {
   sideNavigation: document.querySelector('#side-navigation'),
@@ -11,48 +12,98 @@ const htmlElem = {
   messageInput: document.getElementById('messageInput'),
   sendMessageButton: document.getElementById('sendMessageButton'),
   ChatBox: document.getElementById('chatBox'),
-  personalDataForm: [...document.querySelectorAll('#personal-data input')],
-  personalDataSave: document.querySelector('#personal-data .button-form'),
+  personalDataForm: document.querySelector('#personal-data form'),
 };
 
 class FormElement {
-  constructor(inputValue, inputName) {
-    this.inputValue = inputValue;
-    this.inputName = inputName;
-    this.sendMessage(inputValue);
-    this.validation(inputValue, inputName);
-  }
+  constructor() {}
 
   sendMessage(inputValue) {
-    const message = htmlElem.messageInput.value;
-    console.log(inputValue);
+    console.log('wnetrze send message', inputValue);
 
-    if (message) {
+    if (inputValue) {
       const messageElement = document.createElement('p');
 
+      htmlElem.messageInput.parentElement.querySelector('.error').innerHTML =
+        '';
       messageElement.classList.add('client-message');
-      messageElement.innerText = message;
-
+      messageElement.innerText = inputValue;
       htmlElem.ChatBox.appendChild(messageElement);
       htmlElem.messageInput.value = '';
+    } else {
+      htmlElem.messageInput.parentElement.querySelector('.error').innerHTML =
+        'Please write a message';
     }
   }
 
-  validation(inputName, inputValue) {
-    let isFormValidate = true;
-    console.log(inputName);
-    console.log(inputValue);
-    const emailAddressInput = htmlElem.personalDataForm.querySelector(
-      'input[name="email"]'
-    );
+  validation(inputs) {
+    let password = inputs[inputs.length - 2].value;
 
-    if (emailAddressInput.indexOf('@') < 0) {
-      isFormValidate = false;
-      htmlElem.personalDataForm.querySelector(
-        '.error'
-      ).innerHTML = ` Invalid ${inputName} adress`;
-    }
-    return !isFormValidate ? false : true;
+    [...inputs].forEach((input) => {
+      const inputName = input.getAttribute('name');
+
+      switch (inputName) {
+        case 'name':
+          if (input.value.length < 3 || input.value.length > 21) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'The name should be between 3 and 15 characters.';
+          } else {
+            input.parentElement.querySelector('.error').innerHTML = '';
+          }
+          break;
+        case 'surname':
+          if (input.value.length < 3 || input.value.length > 65) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'The last name should have more than 3 characters';
+          } else {
+            input.parentElement.querySelector('.error').innerHTML = '';
+          }
+          break;
+        case 'email':
+          if (input.value.indexOf('@') < 1) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'Please enter a valid email address. ';
+          } else {
+            input.parentElement.querySelector('.error').innerHTML = '';
+          }
+          break;
+        case 'phone':
+          if (input.value.length < 9 || input.value.length > 15) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'Please enter a valid phone number. ';
+          } else {
+            input.parentElement.querySelector('.error').innerHTML = '';
+          }
+          break;
+        case 'password':
+          if (input.value.length < 8) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'The password must have a specified length (e.g., at least 8 characters). ';
+          } else if (!/[A-Z]/.test(input.value)) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'The password must contain at least one uppercase letter. ';
+          } else if (!/[a-z]/.test(input.value)) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'The password must contain at least one lowwercase letter. ';
+          } else if (!/\d/.test(input.value)) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'he password must contain at least one digit.';
+          } else {
+            input.parentElement.querySelector('.error').innerHTML = '';
+          }
+          break;
+        case 'repeat-password':
+          console.log(password);
+          if (input.value !== password) {
+            input.parentElement.querySelector('.error').innerHTML =
+              'the passwords do not match';
+          } else {
+            input.parentElement.querySelector('.error').innerHTML = '';
+            console.log('ss');
+          }
+          break;
+      }
+    });
   }
 }
 
@@ -91,7 +142,6 @@ const app = {
     popUpClose,
     popUp,
     sendMessageButton,
-    personalDataSave,
     personalDataForm,
   }) {
     /* Side Navigation Links */
@@ -128,17 +178,17 @@ const app = {
       const inputValue =
         sendMessageButton.parentElement.querySelector('#messageInput').value;
 
-      const message = new FormElement(inputValue);
-      message.sendMessage();
+      const message = new FormElement();
+      message.sendMessage(inputValue);
     });
 
-    personalDataSave.addEventListener('click', (e) => {
+    /* Send personal data form */
+    personalDataForm.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      personalDataForm.forEach((input) => {
-        const inputName = input.getAttribute('name');
-        new FormElement(inputName).validation();
-      });
+      const inputs = e.target.querySelectorAll('input');
+
+      new FormElement().validation(inputs);
     });
   },
 

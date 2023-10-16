@@ -337,7 +337,7 @@
         </div>
     </section>
 
-    <section id="personal-data" class="none">
+    <section id="personal-data" class="active">
         <div class="page-cart ">
             <h2 class="page-cart-title">Personal data</h2>
             <form action="">
@@ -345,21 +345,25 @@
                     <div class="container">
                         <div class="form-label-wrap">
                             <label for="name" class="text">Name</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name">
+                            <p class="error"></p>
+
                         </div>
                         <div class="form-label-wrap">
                             <label for="surname">Surname</label>
-                            <input type="text" id="surname" name="surname" required>
+                            <input type="text" id="surname" name="surname">
+                            <p class="error"></p>
                         </div>
                         <div class="form-label-wrap">
                             <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email">
+                            <p class="error"></p>
                         </div>
                         <div class="form-label-wrap">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone">
+                            <p class="error"></p>
                         </div>
-                        <p class="error"></p>
                     </div>
                 </div>
                 <div class=" page-cart-content">
@@ -367,14 +371,17 @@
                         <div class="form-label-wrap">
                             <label for="skype">Skype</label>
                             <input type="text" id="skype" name="skype">
+                            <p class="error"></p>
                         </div>
                         <div class="form-label-wrap">
                             <label for="icq">ICQ:</label>
                             <input type="text" id="icq" name="icq">
+                            <p class="error"></p>
                         </div>
                         <div class="form-label-wrap">
                             <label for="msn">MSN:</label>
                             <input type="text" id="msn" name="msn">
+                            <p class="error"></p>
                         </div>
                     </div>
 
@@ -384,18 +391,21 @@
                         <div class="form-label-wrap">
                             <label for="wallet">Wallet:</label>
                             <input type="text" id="wallet-data-form" name="wallet">
+                            <p class="error"></p>
                         </div>
                     </div>
                 </div>
                 <div class=" page-cart-content">
                     <div class="container">
                         <div class="form-label-wrap"> <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
+                            <input type="password" id="password" name="password">
+                            <p class="error"></p>
                         </div>
                         <div class="form-label-wrap"> <label for="repeat-password">Repeat Password:</label>
-                            <input type="password" id="repeat-password" name="repeat-password" required>
+                            <input type="password" id="repeat-password" name="repeat-password">
+                            <p class="error"></p>
+
                         </div>
-                        <p class="error-password"></p>
                     </div>
                 </div>
 
@@ -434,6 +444,7 @@
                 <form action="" class="send-message">
                     <input type="text" id="messageInput" placeholder="Enter the message" name="message" />
                     <button class="button-form" id="sendMessageButton">Send</button>
+                    <p class="error"></p>
                 </form>
             </div>
 

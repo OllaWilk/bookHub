@@ -114,6 +114,7 @@
 .send-message {
   @include flex(row, center, space-between);
   padding: 0px 15px 0 15px;
+  flex-wrap: wrap;
 
   input {
     width: 85%;
@@ -126,6 +127,10 @@
     padding: 4px 10px;
     border: 1px solid $color-main;
     margin-left: 15px;
+  }
+
+  .error {
+    width: 100%;
   }
 }
 
