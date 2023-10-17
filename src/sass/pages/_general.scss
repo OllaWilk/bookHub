@@ -7,20 +7,6 @@
   @include flex(column, flex-start, center);
   width: 100%;
   margin: 70px 0;
-
-  .graph-wrap {
-    margin-top: 44px;
-    width: 100%;
-    height: auto;
-    overflow-x: auto;
-    @include flex(column, center, center);
-
-    img {
-      height: 100%;
-      width: auto;
-      max-width: 100%;
-    }
-  }
 }
 
 #actionable-list {

@@ -129,7 +129,8 @@
                     </div>
                     <div id="graph">
                         <h3 class="title">Earnings chart</h3>
-                        <div class="graph-wrap"><img src="./images/graph.png" alt="graph"></div>
+                        <canvas id="myChart"></canvas>
+
                     </div>
                 </div>
             </div>
@@ -337,7 +338,7 @@
         </div>
     </section>
 
-    <section id="personal-data" class="active">
+    <section id="personal-data" class="none">
         <div class="page-cart ">
             <h2 class="page-cart-title">Personal data</h2>
             <form action="">
@@ -404,7 +405,6 @@
                         <div class="form-label-wrap"> <label for="repeat-password">Repeat Password:</label>
                             <input type="password" id="repeat-password" name="repeat-password">
                             <p class="error"></p>
-
                         </div>
                     </div>
                 </div>
@@ -450,6 +450,8 @@
 
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="js/canvas.js"></script>
     <script src="js/script.js"></script>
 </body>
 

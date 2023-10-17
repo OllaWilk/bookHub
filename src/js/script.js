@@ -99,7 +99,6 @@ class FormElement {
               'the passwords do not match';
           } else {
             input.parentElement.querySelector('.error').innerHTML = '';
-            console.log('ss');
           }
           break;
       }
