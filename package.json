@@ -3,7 +3,7 @@
   "name": "bookhub",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "init-project": "npm install && npm-run-all init:*",
     "init:dirs": "mkdirp dist src/sass src/css src/vendor src/images src/js",
@@ -11,10 +11,11 @@
     "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
     "init:gitignore:custom": "echo \"dist\" >> .gitignore",
     "test": "npm-run-all test:*",
-    "test:js": "eslint src/js/",
+    "test:html": "globstar nu-html-checker src/index.html",
+    "test:js": "eslint --fix src/js/",
     "test:scss": "stylelint src/sass/",
     "build": "npm-run-all build:* test",
-    "build:clean": "rimraf dist && mkdirp dist",
+    "build:clean": "mkdirp dist && rm -r dist && mkdirp dist",
     "build:copy": "copyfiles -a -u 1 -e \"**/sass/**/*\" -e \"**/.gitkeep\" \"src/**/*\" dist",
     "build:sass": "sass --style=compressed --no-source-map src/sass:dist/css",
     "build:autoprefixer": "postcss dist/css/*.css --use autoprefixer -d dist/css",
@@ -35,6 +36,7 @@
     "globstar": "^1.0.0",
     "html-validate": "^7.18.1",
     "mkdirp": "^0.5.6",
+    "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
     "postcss": "^8.4.31",
@@ -44,7 +46,9 @@
     "sass": "^1.69.0",
     "stylelint": "^14.16.1",
     "stylelint-config-standard-scss": "^5.0.0",
-    "stylelint-scss": "^4.7.0",
-    "normalize.css": "^8.0.1"
+    "stylelint-scss": "^4.7.0"
+  },
+  "dependencies": {
+    "nu-html-checker": "^0.1.0"
   }
 }
