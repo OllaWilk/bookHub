@@ -145,7 +145,7 @@ const app = {
   }) {
     /* Side Navigation Links */
     navLinks.forEach((link) => {
-      const linkAttributte = link.querySelector('a').getAttribute('page');
+      const linkAttributte = link.querySelector('a').getAttribute('data-page');
 
       link.addEventListener('click', (e) => {
         e.preventDefault();
